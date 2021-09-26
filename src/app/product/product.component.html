@@ -1,0 +1,65 @@
+<div *ngIf="showdata">
+  <div class="row" style="display: flex;">
+    <span class="col-md-8">
+      <H2 style="margin-left: 10px;color: #04AA6D;">AIRBUS</H2>
+    </span>
+    <span class="col-md-4" style="float: right;float: right;transform: translateX(1440%);">
+        <button class="mat-raised-button mat-primary"(click)="logout()" >Logout</button>
+    </span>
+  </div>
+
+  <div class="row" style="float: right;">
+    <span style="margin-right: 25px;display: inline-block; transform: translateY(7px);"  class="col-md-4">
+        <mat-icon style="color:#04AA6D;font-size: xx-large;" (click)="ngOnInit()" >autorenew</mat-icon>
+    </span>
+    <span  class="col-md-3" style="display: inline;transform: translateY(19px);margin-right: 20px;">
+      <select style="width: 127px;height: 42px;margin-top: 9px;background-color: #04AA6D;color: white;" [(ngModel)]="selectedCategory" (change)="filter(selectedCategory)">
+       <option value="all_value">All Category</option>
+       <option *ngFor="let element of category" [value]="element">{{element}}</option>
+     </select>
+   </span>
+    <span style="margin-right: 4px;display: inline;float: right;"  class="col-md-3">
+      <button class="mat-raised-button mat-primary" (click)="addProduct()">Add Product</button>
+    </span>
+  </div>
+<table style="margin-top: 74px;">
+  <thead>
+    <th > Product Id</th>
+    <th > Name </th>
+    <th > Category </th>
+    <th > Description </th>
+    <th > Units </th>
+    <th > Action </th>
+  </thead>
+  <tbody *ngFor="let element of showdata;let i=index">
+    
+      <td *ngIf="!edit || i!=editindex"> {{element.productId}} </td>
+      <td *ngIf="!edit || i!=editindex"> {{element.productName}} </td>
+      <td *ngIf="!edit || i!=editindex"> {{element.productCategory}} </td>
+      <td *ngIf="!edit || i!=editindex"> {{element.productDescription}} </td>
+      <td *ngIf="!edit || i!=editindex"> {{element.units}} </td>
+      
+      <td *ngIf="edit && i==editindex"><input  type="text"  [(ngModel)]="editProd.productId"></td>
+      <td *ngIf="edit && i==editindex"><input  type="text" [(ngModel)]="editProd.productName"></td>
+      <td *ngIf="edit && i==editindex"><input  type="text" [(ngModel)]="editProd.productCategory"></td>
+      <td *ngIf="edit && i==editindex"><input  type="text" [(ngModel)]="editProd.productDescription"></td>
+      <td *ngIf="edit && i==editindex"><input  type="text" [(ngModel)]="editProd.units"></td>
+    
+    
+    <td>
+      
+  <mat-icon  *ngIf="edit" (click)="updateChange(editProd)" >done</mat-icon>
+  <mat-icon *ngIf="edit" (click)="editChange(element,-1)">close</mat-icon>
+  <mat-icon *ngIf="!edit" (click)="editChange(element,i)">edit</mat-icon>
+  <mat-icon *ngIf="!edit" (click)="deleteChange(element.productId)">delete</mat-icon>
+    </td>
+  </tbody>
+</table>
+
+  
+</div>  
+
+
+
+
+

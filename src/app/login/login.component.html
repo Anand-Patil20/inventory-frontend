@@ -1,0 +1,17 @@
+
+<h2 style="margin-left: 47%;margin-top: 7%;">Login</h2>
+<form >
+
+    <div class="container">
+        <div style="margin-top: 25px;">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required [(ngModel)]="username">
+        </div>
+        <div style="margin-top: 25px;">
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="password">
+        </div>
+        <button style="margin-top: 45px;" type="submit" (click)="authenticate()">Login</button>
+    </div>
+
+</form>

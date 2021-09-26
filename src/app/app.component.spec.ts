@@ -23,13 +23,13 @@ describe('AppComponent', () => {
   it(`should have as title 'inventory-frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('inventory-frontend');
+    expect(app.title).toEqual('Airbus Inventory');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('inventory-frontend app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Airbus Inventory app is running!');
   });
 });

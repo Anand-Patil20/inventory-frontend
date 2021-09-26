@@ -1,0 +1,47 @@
+<div >
+    <div class="row" style="display: flex;">
+        <span class="col-md-8">
+          <H2 style="margin-left: 10px;color: #04AA6D;">AIRBUS</H2>
+        </span>
+        <span class="col-md-4" style="float: right;float: right;transform: translateX(1415%);">
+            <button class="mat-raised-button mat-primary" (click)="logout()">Logout</button>
+        </span>
+      </div>
+    
+      <div class="row" style="float: right;">
+        <span style="margin-right: 25px;display: inline-block;"  class="col-md-3">
+            <button class="mat-raised-button mat-primary" (click)="viewProduct()">View Products</button>
+        </span>
+      </div>
+    <form >
+
+		<div class="container">
+            <div style="margin-top: 25px;">
+                <label><b>Id</b></label>
+                <input style="margin-right: 166px;float: right;" name="id" placeholder="Product Id" [(ngModel)]="product.productId">
+            </div>
+            <div style="margin-top: 25px;">
+                <label><b>Name</b></label>
+                <input style="margin-right: 166px;float: right;" name="name" placeholder="Product Name" [(ngModel)]="product.productName">
+            </div>
+            <div style="margin-top: 25px;">
+                <label><b>Category</b></label>
+                <input style="margin-right: 166px;float: right;" name="category" placeholder="Product Category" [(ngModel)]="product.productCategory">
+            </div>
+            <div style="margin-top: 25px;">
+                <label><b>Description</b></label>
+                <input  style="margin-right: 166px;float: right;" name="description" placeholder="Product Description" [(ngModel)]="product.productDescription">
+            </div>
+            <div style="margin-top: 25px;">
+                <label><b>Units</b></label>
+                <input style="margin-right: 166px;float: right;" name="units" placeholder="Product Units" type="number" [(ngModel)]="product.units">
+            </div>
+            <div style="width: 74px;margin-top: 35px;float: right; margin-right: 38%;">
+                <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+
