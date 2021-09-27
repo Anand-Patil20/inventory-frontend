@@ -34,7 +34,9 @@ export class ProductComponent implements OnInit {
       this.data=res;
       this.showdata=res;
       for (let index = 0; index < this.data.length; index++) {
-        this.category.push(this.data[index].productCategory);
+        if(this.category.indexOf(this.data[index].productCategory)==-1){
+           this.category.push(this.data[index].productCategory);
+        }
       }
     })
   }

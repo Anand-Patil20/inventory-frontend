@@ -34,10 +34,10 @@
             </div>
             <div style="margin-top: 25px;">
                 <label><b>Units</b></label>
-                <input style="margin-right: 166px;float: right;" name="units" placeholder="Product Units" type="number" [(ngModel)]="product.units">
+                <input style="margin-right: 166px;float: right;" name="units" placeholder="Product Units" type="number" min="0" [(ngModel)]="product.units">
             </div>
             <div style="width: 74px;margin-top: 35px;float: right; margin-right: 38%;">
-                <button class="mat-raised-button mat-primary" [disabled]="product.productId==''" (click)="save()">Save</button>
+                <button class="mat-raised-button mat-primary" [disabled]="product.productId==''|| product.units<0" (click)="save()">Save</button>
             </div>
         </div>
     </form>
