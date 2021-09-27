@@ -24,8 +24,13 @@ export class LoginComponent implements OnInit {
       user.password=this.password;
       this._snackBar.open("Loging in please wait");
       this.allService.authenticate(user).subscribe(res=>{
-      sessionStorage.setItem('token', res);
-      this.router.navigate(['/products']);
+       if(res!=null && res!='') 
+        {
+          sessionStorage.setItem('token', res);
+          this.router.navigate(['/products']);
+        }else{
+          this._snackBar.open("Please check your credentials","",{duration: 2500});
+        }
     });
     
   }
