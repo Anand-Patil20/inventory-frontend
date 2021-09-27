@@ -33,3 +33,21 @@ button {
 button:hover {
   opacity: 0.8;
 }
+
+::ng-deep .mat-snack-bar-container{
+  transform: scale(1)!important ;
+  opacity: 1!important ;
+  position: absolute;
+  bottom: -24px;
+  background: #04AA6D!important ;
+  width: -51px!important ;
+  width: 0px!important ;
+  margin-left: 34%!important ;
+}
+
+::ng-deep .mat-simple-snackbar span {
+  margin: auto !important;
+  color:white !important;
+  text-align: center !important;
+  font-size: larger !important;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AllServiceService } from '../all-service.service';
 import { Product } from '../domain/Product';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'products',
   templateUrl: './product.component.html',
@@ -16,10 +17,14 @@ export class ProductComponent implements OnInit {
   category:String[]=[];
   selectedCategory:String="all_value";
   constructor(private allService:AllServiceService,
-    private router:Router
+    private router:Router,
+    private _snackBar: MatSnackBar
     ) { }
   displayedColumns: string[] = ['productId', 'productName', 'productCategory', 'productDescription','units'];
   ngOnInit(): void {
+    if(!sessionStorage.getItem('token')){
+      this.router.navigate(['/login']);     
+    }
     this.data=[];
     this.showdata=[];
     this.category=[];
@@ -56,7 +61,6 @@ export class ProductComponent implements OnInit {
         }
       }
       
-      console.log(this.showdata);
       
     }else{
       this.showdata=this.data;
@@ -68,25 +72,31 @@ export class ProductComponent implements OnInit {
     this.edit=false;
     this.allService.updateProduct(prod).subscribe(res=>{
       this.ngOnInit();
+      this._snackBar.open("Product updated");
+    },
+    err=>{
+      this._snackBar.open("Product not updated","",{duration: 2500});
+      this.ngOnInit();
+      
     })  
     
   }
-  deleteChange(prod:number){
-    this.allService.deleteProduct(prod).subscribe(res=>{
-      console.log(res);
-     if(res=="Successfully Deleted")
-      {
-          this.ngOnInit();
-      }
-    });
+  delete(prod:number){
+    if(confirm("Are you sure you want to delete Product id "+ prod)){
+      this.allService.deleteProduct(prod).subscribe(res=>{
+          if(res=="Successfully Deleted")
+          {
+            this._snackBar.open("Successfully Deleted");
+              this.ngOnInit();
+          }
+        });
+    }
   }
   addProduct(){
     // AddProductComponent
     this.router.navigate(['/addproduct']);
   }
   logout(){
-    console.log("in logout");
-    
     sessionStorage.removeItem('token');
     this.router.navigate(['/login']);
   }

@@ -11,7 +11,7 @@
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="password">
         </div>
-        <button style="margin-top: 45px;" type="submit" (click)="authenticate()">Login</button>
+        <button style="margin-top: 45px;" [disabled]="username==''||password==''" type="submit" (click)="authenticate()">Login</button>
     </div>
 
 </form>
